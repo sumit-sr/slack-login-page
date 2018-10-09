@@ -1,0 +1,14 @@
+<div class="col-md-8 offset-2 landing-page">
+  <div class="col-md-12 box">
+    <h1>Just a few quick things to set up your account...</h1>
+    <%= form_tag(signup_path, method: :post) do |f| %>
+      <div class="field">
+        <%= label_tag :email %><br>
+        <%= text_field_tag :email, '', placeholder: 'Your Email....', class: 'form-control' %>
+      </div>
+      <div class="action">
+        <%= submit_tag 'Get Started', class: 'ready-btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>

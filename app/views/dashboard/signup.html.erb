@@ -1,0 +1,113 @@
+<div class="row signup-page">
+  <div class="col-md-6 left-side">
+    <%= image_tag "/assets/slack-img.png" %>
+  </div>
+  <div class="col-md-6 right-side">
+    <h1>Where work happens</h1>
+    <% resource_name = :user %>
+    <% url = @user.persisted? ? session_path(resource_name) : registration_path(resource_name) %>
+    <% method_type = @user.persisted? ? 'put' : 'post' %>
+    <% action_text = @user.persisted? ? 'Login! ->' : 'Ready! ->'  %>
+
+    <%= form_for(@user, as: resource_name, url: url, html: { method: method_type.to_sym }) do |f| %>
+      <%= f.hidden_field :email %>
+
+      <% if @user.persisted? %>
+        <p>Email already exist in our DB!</p>
+      <% else %>
+        <div class="field">
+          <%= f.label :name %><br>
+          <%= f.text_field :name, placeholder: 'Name', class: 'form-control' %>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :password %><br>
+        <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
+      </div>
+      <div id="password_strength"></div>
+
+      <div class="action">
+        <%= submit_tag action_text, class: 'ready-btn form-control' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $("#user_password").bind("keyup", function() {
+    var color, i, passed, regex, strength;
+    if ($(this).val().length === 0) {
+      $("#password_strength").html("");
+      return;
+    }
+    else if ($(this).val().length < 6) {
+      $("#password_strength").html("Min. length 6");
+      return; 
+    }
+    else if ($(this).val() == 'password') {
+      $("#password_strength").html("Invalid!");
+      $(this).val('');
+      return;  
+    }
+    else if ($(this).val() == '12345678') {
+      $("#password_strength").html("Invalid");
+      $(this).val('');
+      return;  
+    }
+    regex = new Array();
+    regex.push("[A-Z]");
+    regex.push("[a-z]");
+    regex.push("[0-9]");
+    regex.push("[$@$!%*#?&]");
+    passed = 0;
+    i = 0;
+    while (i < 3) {
+      if (new RegExp(regex[i]).test($(this).val())) {
+        passed++;
+      }
+      i++;
+    }
+    if (passed > 2 && $(this).val().length > 5) {
+      passed++;
+    }
+    if (passed > 3 && new RegExp(regex[3]).test($(this).val())) {
+      passed++;
+    }
+    if (passed > 4 && $(this).val().length > 5) {
+      passed++;
+    }
+
+    color = "";
+    strength = "";
+
+    switch (passed) {
+      case 0:
+      case 1:
+        strength = "Weak";
+        color = "red";
+        break;
+      case 2:
+        strength = "Weak";
+        color = "red";
+        break;
+      case 3:
+        strength = "Weak";
+        color = "red";
+        break;
+      case 4:
+        strength = "Good";
+        color = "darkorange";
+        break;
+      case 5:
+        strength = "Strong";
+        color = "green";
+        break;
+      case 6:
+        strength = "Very Strong";
+        color = "darkgreen";
+    }
+    $("#password_strength").html(strength);
+    return $("#password_strength").css("color", color);
+  });
+</script>

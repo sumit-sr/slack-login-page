@@ -1,3 +1,57 @@
-// Place all the styles related to the dashboard controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.header {
+  height: 100px;
+  margin-bottom: 50px;
+  .logout {
+    float: right;
+    padding: 25px;
+  }
+  .middle {
+    border-bottom: 1px solid;
+  }
+}
+
+.landing-page {
+  .box {
+    padding: 85px 100px;
+  }
+  .box h1 {
+    margin-bottom: 20px;
+  }
+  .action {
+    padding: 10px 35%;
+  }
+  .ready-btn {
+    background: #007E33;
+    color: #fff;
+    padding: 5px 15px;
+    cursor: pointer;
+  }
+  .field label {
+    margin: 0;
+    font-weight: bold;
+    font-size: 14px;
+  }
+}
+
+.signup-page {
+  .action {
+    padding: 10px 0px;
+  }
+  .ready-btn {
+    background: #007E33;
+    color: #fff;
+    padding: 5px 15px;
+    cursor: pointer;
+  }
+  .field label {
+    margin: 10px 0px 0px 0px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .left-side img {
+    max-width: 100%;
+  }
+  .right-side h1 {
+    font-size: 70px;
+  }
+}
