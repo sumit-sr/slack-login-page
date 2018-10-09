@@ -1,6 +1,10 @@
-<div class="col-md-8 offset-2 landing-page">
-  <div class="col-md-12 box">
-    <h1>Just a few quick things to set up your account...</h1>
+<div class="row signup-page">
+  <div class="col-md-6 left-side">
+    <%= image_tag "/assets/slack-img.png" %>
+  </div>
+  <div class="col-md-6 right-side">
+    <h1>Where work happens</h1>
+    <p>When your team needs to kick off a project, hire a new employee, deploy some code, review a sales contract, finalize next year's budget, measure an A/B test, plan your next office opening, and more, Slack has you covered.</p>
     <%= form_tag(signup_path, method: :post) do |f| %>
       <div class="field">
         <%= label_tag :email %><br>

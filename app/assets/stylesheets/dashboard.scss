@@ -34,6 +34,17 @@
 }
 
 .signup-page {
+  .right-side {
+    .field {
+      width: 75%;
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+    }
+    .action {
+      display: inline-block;
+    }
+  }
   .action {
     padding: 10px 0px;
   }
