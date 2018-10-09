@@ -4,6 +4,10 @@
   <div class="col-md-2">
     <% if user_signed_in? %>
       <%= link_to 'Signout', destroy_user_session_path, method: :delete, class: 'logout' %>
+    <% else %>
+      <% if params[:action].eql?('landing') %>
+        <%= link_to 'Sign in', new_user_session_path, class: 'login' %>
+      <% end %>
     <% end %>
   </div>
 </div>
